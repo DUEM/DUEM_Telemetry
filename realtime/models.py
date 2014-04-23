@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class motorstate(models.Model):
-    id = models.AutoField(primary_key=True)
+    msg_id = models.AutoField(primary_key=True)
     time = models.DateTimeField()
     busCurrent = models.FloatField()
     busVoltage = models.FloatField()
@@ -34,4 +34,4 @@ class motorstate(models.Model):
     class Meta:
         db_table = "motorstate"
         managed = False
-        get_latest_by = 'id'
+        get_latest_by = 'msg_id'

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Telemetry.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test2',
+        'NAME': '2016test',
         'USER': 'root',
         'PASSWORD': 'dusc2015',
         'HOST': '127.0.0.1',
@@ -124,3 +124,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")

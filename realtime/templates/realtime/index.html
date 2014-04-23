@@ -210,7 +210,7 @@
                 var yVal = 100;
                 var updateInterval = 250;
                 var updateMotorState = function () {
-                    var jqxhr = $.getJSON( "json",
+                    var jqxhr = $.getJSON( "motorjson",
                         function(motorstate) {
                             var fields = motorstate[0].fields;
                                 updateHeader(fields);
