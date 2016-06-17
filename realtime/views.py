@@ -1,9 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
-from .models import motorstate
+from .models import motorstate, controlstate
+
 
 def json(request):
-    data = serializers.serialize("json",[motorstate.objects.latest(),])
-    return HttpResponse(data)
-# Create your views here.
+
+    controldata = [controlstate.objects.latest(), ]
+    motordata = [motorstate.objects.latest(), ]
+    data = {}
+    data['motor'] = motordata
+    data['control'] = controldata
+    jsondata = serializers.serialize("json", data)
+    return HttpResponse(jsondata)
+# Create your views hereo

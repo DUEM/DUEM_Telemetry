@@ -2,7 +2,9 @@ from django.db import models
 
 # Create your models here.
 
+
 class motorstate(models.Model):
+
     id = models.AutoField(primary_key=True)
     time = models.DateTimeField()
     busCurrent = models.FloatField()
@@ -31,7 +33,22 @@ class motorstate(models.Model):
     capacitorTemp = models.FloatField()
     DCBusAmpHours = models.FloatField()
     Odometer = models.FloatField()
+
     class Meta:
         db_table = "motorstate"
+        managed = False
+        get_latest_by = 'id'
+
+
+class controlstate(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    time = models.DateTimeField()
+    busCurrent = models.FloatField()
+    motorCurrent = models.FloatField()
+    motorVelocity = models.FloatField()
+
+    class Meta:
+        db_table = "controls"
         managed = False
         get_latest_by = 'id'

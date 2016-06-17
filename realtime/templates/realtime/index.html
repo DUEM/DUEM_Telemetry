@@ -212,7 +212,7 @@
                 var updateMotorState = function () {
                     var jqxhr = $.getJSON( "json",
                         function(motorstate) {
-                            var fields = motorstate[0].fields;
+                            var fields = motorstate[0]['motor'].fields;
                                 updateHeader(fields);
                                 updateBody(fields);
                                 updateSparks(fields, sparkdata, sparklength);
