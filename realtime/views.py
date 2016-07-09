@@ -2,20 +2,28 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
 from .models import motorstate, controlstate
+import pickle
+import json
+import datetime
 
 # Create your views here.
 
-def motorjson(request):
-    data = serializers.serialize("json",[motorstate.objects.latest(),])
+def controlsjson(request):
+    controls_file = open("/dev/shm/controls","rb+")
+    controls_status = pickle.load(controls_file)
+    controls_status['time'] = controls_status['time'].isoformat() # json can't handle datetime objs
+    data = json.dumps(controls_status)
     return HttpResponse(data)
 
-def json(request):
+def gpsjson(request):
+    gps_file = open("/dev/shm/gps","rb+")
+    gps_status = pickle.load(gps_file)
+    data = json.dumps(gps_status)
+    return HttpResponse(data)
 
-    controldata = [controlstate.objects.latest(), ]
-    motordata = [motorstate.objects.latest(), ]
-    data = {}
-    data['motor'] = motordata
-    data['control'] = controldata
-    jsondata = serializers.serialize("json", data)
-    return HttpResponse(jsondata)
-# Create your views hereo
+def motorjson(request):
+    motor_file = open("/dev/shm/motor","rb+")
+    motor_status = pickle.load(motor_file)
+    motor_status['time'] = motor_status['time'].isoformat() # json can't handle datetime objs
+    data = json.dumps(motor_status)
+    return HttpResponse(data)

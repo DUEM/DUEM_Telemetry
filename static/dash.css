@@ -137,3 +137,20 @@ body {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
+h3 {
+  font-size: 1.777em;
+  -webkit-column-span: all; 
+  column-span: all; 
+}
+
+article {
+    -webkit-columns: 2 200px;
+       -moz-columns: 2 200px;
+            columns: 2 200px;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}

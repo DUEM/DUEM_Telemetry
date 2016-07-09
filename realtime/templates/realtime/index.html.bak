@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>DUEM Realtime Telemetry</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/dash.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><sol1><h1><p id="top1">N/A</p></h1>km/h<br>Vehicle Vel.</sol1></li>
+        <li><sol2><h1><p id="top2">N/A</p></h1>A<br>Motor Curr.</sol2></li>
+        <li><sol3><h1><p id="top3">N/A</p></h1>°C<br>Motor Temp.</sol3></li>
+        <li><sol4><h1><p id="top4">N/A</p></h1>V<br>Batt. Volt.</sol4></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="main">
+          <h2 class="sub-header">Telemetry</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Val</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td><span class="busCurrentSpark">Loading..</span> Bus Current</td>
+                      <td> <span id ="busCurrent">0</span>A</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="busVoltageSpark">Loading..</span> Bus Voltage</td>
+                      <td> <span id ="busVoltage">0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="vehicleVelocitySpark">Loading..</span>Vehicle Velocity</td>
+                      <td> <span id ="vehicleVelocity">0</span>m/s</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="motorVelocitySpark">Loading..</span>Motor Velocity</td>
+                      <td> <span id ="motorVelocity"> 0</span>rpm</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="phaseACurrentSpark">Loading..</span> Phase A Current</td>
+                      <td> <span id ="phaseACurrent"> 0</span>A</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="phaseBCurrentSpark">Loading..</span> Phase B Current</td>
+                      <td> <span id ="phaseBCurrent"> 0</span>A</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="vectVoltRealSpark">Loading..</span> Vector Voltage</td>
+                      <td> <span id ="vectVoltReal"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="vectVoltImagSpark">Loading..</span> Vector Voltage Imag</td>
+                      <td> <span id ="vectVoltImag"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="vectCurrRealSpark">Loading..</span> Vector Current Real</td>
+                      <td> <span id ="vectCurrReal"> 0</span>A</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="vectCurrImagSpark">Loading..</span> Vector Current Imag</td>
+                      <td> <span id ="vectCurrImag"> 0</span>A</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="backEMFRealSpark">Loading..</span> Back EMF Real</td>
+                      <td> <span id ="backEMFReal"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="backEMFImagSpark">Loading..</span> Back EMF Imag</td>
+                      <td> <span id ="backEMFImag"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="fifteenVsupplySpark">Loading..</span> 15 V Rail</td>
+                      <td> <span id ="fifteenVsupply"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="onesixfiveVsupplySpark">Loading..</span> 1.65 V Rail</td>
+                      <td> <span id ="onesixfiveVsupply"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="twofiveVsupplySpark">Loading..</span> 2.5 V Rail</td>
+                      <td> <span id ="twofiveVsupply"> 0</span>V</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="onetwoVsupplySpark">Loading..</span> 1.2 V Rail</td>
+                      <td> <span id ="onetwoVsupply"> 0</span>TODO</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="fanSpeedSpark">Loading..</span> Fan Speed</td>
+                      <td> <span id ="fanSpeed"> 0</span>RPM</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="fanDriveSpark">Loading..</span> Fan Drive</td>
+                      <td> <span id ="fanDrive"> 0</span></td>
+                  </tr>
+                  <tr>
+                      <td><span class ="heatSinkTempSpark">Loading..</span> Heatsink Temperature</td>
+                      <td> <span id ="heatSinkTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="motorTempSpark">Loading..</span> motorTemp</td>
+                      <td> <span id ="motorTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="airInletTempSpark">Loading..</span> airInletTemp</td>
+                      <td> <span id ="airInletTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="processorTempSpark">Loading..</span> processorTemp</td>
+                      <td> <span id ="processorTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="airOutletTempSpark">Loading..</span> airOutletTemp</td>
+                      <td> <span id ="airOutletTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="capacitorTempSpark">Loading..</span> capacitorTemp</td>
+                      <td> <span id ="capacitorTemp"> 0</span>°C</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="DCBusAmpHoursSpark">Loading..</span> DCBusAmpHours</td>
+                      <td> <span id ="DCBusAmpHours"> 0</span>Ah</td>
+                  </tr>
+                  <tr>
+                      <td><span class ="OdometerSpark">Loading..</span> Odometer</td>
+                      <td> <span id ="Odometer"> 0</span>m</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/jquery-1.12.3.js"></script>
+    <script src="../static/jquery.sparkline.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var sparkdata = {"busCurrent": [0.0],
+            "busVoltage": [160],
+            "vehicleVelocity": [0.0],
+            "motorVelocity": [0.0],
+            "phaseACurrent": [0.0],
+            "phaseBCurrent": [0.0],
+            "vectVoltReal": [0.0],
+            "vectVoltImag": [0.0],
+            "vectCurrReal": [0.0],
+            "vectCurrImag": [0.0],
+            "backEMFReal": [0.0],
+            "backEMFImag": [0.0],
+            "fifteenVsupply": [15.0],
+            "onesixfiveVsupply": [1.65],
+            "twofiveVsupply": [2.5],
+            "onetwoVsupply": [1.2],
+            "fanSpeed": [0.0],
+            "fanDrive": [0.0],
+            "heatSinkTemp": [20],
+            "motorTemp": [20],
+            "airInletTemp": [20],
+            "processorTemp": [20],
+            "airOutletTemp": [-19.0838],
+            "capacitorTemp": [-19.0838],
+            "DCBusAmpHours": [0.0],
+            "Odometer": [0.0]};
+        var sparklength = 80
+        window.onload = function () {
+                var yVal = 100;
+                var updateInterval = 1000;
+                var updateMotorState = function () {
+                    var jqxhr = $.getJSON( "motorjson",
+                        function(motorstate) {
+                            var fields = motorstate;
+                                updateHeader(fields);
+                                updateBody(fields);
+                                updateSparks(fields, sparkdata, sparklength);
+                        });
+                };
+                // generates first set of dataPoints
+
+                // update chart after specified time.
+                setInterval(function(){updateMotorState()}, updateInterval);
+
+        }
+        function updateHeader(fields) {
+            document.getElementById("top1").innerHTML = fields.vehicleVelocity*3.6;
+            document.getElementById("top2").innerHTML = Math.sqrt(Math.pow(fields.vectCurrReal,2) +Math.pow(fields.vectCurrImag,2));
+            document.getElementById("top3").innerHTML = fields.motorTemp;
+            document.getElementById("top4").innerHTML = fields.busVoltage;
+                };
+        function updateBody(fields) {
+            document.getElementById("busCurrent").innerHTML = fields.busCurrent;
+            document.getElementById("busVoltage").innerHTML = fields.busVoltage;
+            document.getElementById("vehicleVelocity").innerHTML = fields.vehicleVelocity;
+            document.getElementById("motorVelocity").innerHTML = fields.motorVelocity;
+            document.getElementById("phaseACurrent").innerHTML = fields.phaseACurrent;
+            document.getElementById("phaseBCurrent").innerHTML = fields.phaseBCurrent;
+            document.getElementById("vectVoltReal").innerHTML = fields.vectVoltReal;
+            document.getElementById("vectVoltImag").innerHTML = fields.vectVoltImag;
+            document.getElementById("vectCurrReal").innerHTML = fields.vectCurrReal;
+            document.getElementById("vectCurrImag").innerHTML = fields.vectCurrImag;
+            document.getElementById("backEMFReal").innerHTML = fields.backEMFReal;
+            document.getElementById("backEMFImag").innerHTML = fields.backEMFImag;
+            document.getElementById("fifteenVsupply").innerHTML = fields.fifteenVsupply;
+            document.getElementById("onesixfiveVsupply").innerHTML = fields.onesixfiveVsupply;
+            document.getElementById("twofiveVsupply").innerHTML = fields.twofiveVsupply;
+            document.getElementById("onetwoVsupply").innerHTML = fields.onetwoVsupply;
+            document.getElementById("fanSpeed").innerHTML = fields.fanSpeed;
+            document.getElementById("fanDrive").innerHTML = fields.fanDrive;
+            document.getElementById("heatSinkTemp").innerHTML = fields.heatSinkTemp;
+            document.getElementById("motorTemp").innerHTML = fields.motorTemp;
+            document.getElementById("airInletTemp").innerHTML = fields.airInletTemp;
+            document.getElementById("processorTemp").innerHTML = fields.processorTemp;
+            document.getElementById("airOutletTemp").innerHTML = fields.airOutletTemp;
+            document.getElementById("capacitorTemp").innerHTML = fields.capacitorTemp;
+            document.getElementById("DCBusAmpHours").innerHTML = fields.DCBusAmpHours;
+            document.getElementById("Odometer").innerHTML = fields.Odometer;
+                };
+        function updateSparks(fields, sparkdata, sparklength) {
+            for (key in sparkdata){
+                sparkdata[key].push(fields[key]);
+                if (sparkdata[key].length > sparklength)
+                    sparkdata[key].splice(0,1)
+                sparkname = "." + key+"Spark"
+                $(sparkname).sparkline(sparkdata[key], {
+                type: 'line',
+                width: '160',
+                lineColor: '#000000',
+                fillColor: false,
+                minSpotColor: undefined,
+                maxSpotColor: undefined,
+                highlightSpotColor: undefined,
+                highlightLineColor: undefined,
+                spotRadius: 1});
+            };
+        };
+        </script>
+  </body>
+</html>
+
+
