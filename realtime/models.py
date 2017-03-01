@@ -43,9 +43,9 @@ class controlstate(models.Model):
 
     id = models.AutoField(primary_key=True)
     time = models.DateTimeField()
-    busCurrent = models.FloatField()
-    motorCurrent = models.FloatField()
-    motorVelocity = models.FloatField()
+    setBusCurrent = models.FloatField()
+    setMotorCurrent = models.FloatField()
+    setMotorVelocity = models.FloatField()
 
     class Meta:
         db_table = "controls"

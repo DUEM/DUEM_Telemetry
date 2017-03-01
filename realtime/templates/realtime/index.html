@@ -530,7 +530,7 @@ window.onload = function () {
     var yVal = 100;
     var updateInterval = 1000;
     var updateMotorState = function () {
-	var jqxhr = $.getJSON( "motorjson",
+	var jqxhr = $.getJSON( "motorjson", {_: new Date().getTime()},
 		function(motorstate) {
 		    var fields = motorstate;
 		    updateHeader(fields);
@@ -539,7 +539,7 @@ window.onload = function () {
 		});
     };
     var updateControlsState = function () {
-	var jqxhr = $.getJSON( "controlsjson",
+	var jqxhr = $.getJSON( "controlsjson", {_: new Date().getTime()},
 		function(motorstate) {
 		    var fields = motorstate;
 		    updateHeader(fields);
@@ -548,7 +548,7 @@ window.onload = function () {
 		});
     };
     var updateGPSState = function () {
-	var jqxhr = $.getJSON( "gpsjson",
+	var jqxhr = $.getJSON( "gpsjson", {_: new Date().getTime()},
 		function(motorstate) {
 		    var fields = motorstate;
 		    updateHeader(fields);
