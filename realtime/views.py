@@ -35,6 +35,24 @@ def motorjson(request):
     data = json.dumps(motor_status)
     return HttpResponse(data)
 
+def bmsjson(request):
+    bms_file = open("/dev/shm/bms","r+")
+    bms_status = json.load(bms_file)
+    data = json.dumps(bms_status)
+    return HttpResponse(data)
+
+def mppt_woofjson(request):
+    bms_file = open("/dev/shm/mppt_woof","r+")
+    bms_status = json.load(bms_file)
+    data = json.dumps(bms_status)
+    return HttpResponse(data)
+
+def mppt_javedjson(request):
+    bms_file = open("/dev/shm/mppt_javed","r+")
+    bms_status = json.load(bms_file)
+    data = json.dumps(bms_status)
+    return HttpResponse(data)
+
 def csvout(request):
     """A view that streams a large CSV file."""
     # Generate a sequence of rows. The range is based on the maximum number of

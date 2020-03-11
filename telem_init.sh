@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source /root/DUEM_Telemetry/.telem/bin/activate
 
-cd /root/DUEM_Telemetry/
+cd /home/pi/DUEM_Telemetry/
+source .telem/bin/activate
 
 uwsgi --http --ini uwsgi.ini    

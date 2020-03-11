@@ -41,10 +41,12 @@
 		<div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
 		    <ul class="nav navbar-nav">
 			<div class="row">
-			    <div class="col-xs-12 col-sm-3"><sol1><h1><div id="top1">N/A</div></h1>km/h<br>Vehicle Vel.</sol1></div>
-			    <div class="col-xs-12 col-sm-3"><sol2><h1><div id="top2">N/A</div></h1>A<br>Motor Curr.</sol2></div>
-			    <div class="col-xs-12 col-sm-3"><sol3><h1><div id="top3">N/A</div></h1>°C<br>Motor Temp.</sol3></div>
-			    <div class="col-xs-12 col-sm-3"><sol4><h1><div id="top4">N/A</div></h1>V<br>Batt. Volt.</sol4></div>
+			    <div class="col-xs-12 col-sm-2"><sol1><h1><div id="top1">N/A</div></h1>km/h<br>Vehicle Vel.</sol1></div>
+			    <div class="col-xs-12 col-sm-2"><sol2><h1><div id="top2">N/A</div></h1>A<br>Motor Curr.</sol2></div>
+			    <div class="col-xs-12 col-sm-2"><sol3><h1><div id="top3">N/A</div></h1>A<br>Bus Curr</sol3></div>
+			    <div class="col-xs-12 col-sm-2"><sol4><h1><div id="top4">N/A</div></h1>V<br>Batt. Volt.</sol4></div>
+			    <div class="col-xs-12 col-sm-2"><sol1><h1><div id="top5">N/A</div></h1>%<br>Charge</sol1></div>
+			    <div class="col-xs-12 col-sm-2"><sol2><h1><div id="top6">N/A</div></h1>C<br>Batt Temp</sol2></div>
 			</div>	  
 		    </ul>
 		</div><!-- /.navbar-collapse -->
@@ -394,7 +396,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			    <div class="panel panel-default">
 				<div class="panel-heading">
-				    <p class="alignleft">Desired Motor Speed</p>
+				    <p class="alignleft">Target Speed</p>
 				    <p class="alignright"><span id ="setMotorVelocity">0</span> m/s</p>
 				    <div style="clear: both;"></div>
 				</div>
@@ -406,8 +408,8 @@
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			    <div class="panel panel-default">
 				<div class="panel-heading">
-				    <p class="alignleft">Desired Motor Current</p>
-				    <p class="alignright"><span id ="setMotorCurrent">0</span> A</p>
+				    <p class="alignleft">Target Motor Current</p>
+				    <p class="alignright"><span id ="setMotorCurrent">0</span> %</p>
 				    <div style="clear: both;"></div>
 				</div>
 				<div class="panel-body">
@@ -418,8 +420,8 @@
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			    <div class="panel panel-default">
 				<div class="panel-heading">
-				    <p class="alignleft">Desired Bus Current</p>
-				    <p class="alignright"><span id ="setBusCurrent">0</span> A</p>
+				    <p class="alignleft">Target Bus Current</p>
+				    <p class="alignright"><span id ="setBusCurrent">0</span> %</p>
 				    <div style="clear: both;"></div>
 				</div>
 				<div class="panel-body">
@@ -428,9 +430,280 @@
 			    </div>
 			</div>
 		    </div>
-		    <h3>GPS</h3>                  
+		    <h3>MPPTs</h3>                  
+		    <h4>Woof</h4>
+		    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Panel Voltage</p>
+				    <p class="alignright"><span id ="UIN_woof">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="UIN_woofSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Panel Current</p>
+				    <p class="alignright"><span id ="IIN_woof">0</span> A</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="IIN_woofSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Voltage</p>
+				    <p class="alignright"><span id ="UOUT_woof">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="UOUT_woofSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Status</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+					<table style="width: 100%">
+						<tr>
+							<th>BVLR</th>
+							<th>OVT</th>
+							<th>NOC</th>
+							<th>UNDV</th>
+						</tr>
+						<tr>
+				    <td><span id ="BVLR_woof">?</span></td>
+				    <td><span id ="OVT_woof">?</span></td>
+				    <td><span id ="NOC_woof">?</span></td>
+				    <td><span id ="UNDV_woof">?</span></td>
+						</tr>
+					</table>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <h4>Javed</h4>
+		    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Panel Voltage</p>
+				    <p class="alignright"><span id ="UIN_javed">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="UIN_javedSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Panel Current</p>
+				    <p class="alignright"><span id ="IIN_javed">0</span> A</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="IIN_javedSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Voltage</p>
+				    <p class="alignright"><span id ="UOUT_javed">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="UOUT_javedSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Status</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+					<table style="width: 100%">
+						<tr>
+							<th>BVLR</th>
+							<th>OVT</th>
+							<th>NOC</th>
+							<th>UNDV</th>
+						</tr>
+						<tr>
+				    <td><span id ="BVLR_javed">?</span></td>
+				    <td><span id ="OVT_javed">?</span></td>
+				    <td><span id ="NOC_javed">?</span></td>
+				    <td><span id ="UNDV_javed">?</span></td>
+						</tr>
+					</table>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <h3>Voltages</h3>                  
 		    <div class="row">
 
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Voltage (min)</p>
+				    <p class="alignright"><span id ="cellVmin">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="cellVminSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Voltage (avg)</p>
+				    <p class="alignright"><span id ="cellVavg">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="cellVavgSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Voltage (max)</p>
+				    <p class="alignright"><span id ="cellVmax">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="cellVmaxSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Voltage</p>
+				    <p class="alignright"><span id ="pVolt">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="pVoltSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Voltage (Cell sum)</p>
+				    <p class="alignright"><span id ="pSumVolt">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="pSumVoltSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <h3>Currents</h3>
+		    <div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Pack Current</p>
+				    <p class="alignright"><span id ="packCurr">0</span> A</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="packCurrSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Discharge Current Limit</p>
+				    <p class="alignright"><span id ="DCLim">0</span> A</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="DCLimSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Charge Current Limit</p>
+				    <p class="alignright"><span id ="CCLim">0</span> A</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="CCLimSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <h3>Battery Temps</h3>                  
+		    <div class="row">
+
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Temp (min)</p>
+				    <p class="alignright"><span id ="tempmin">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="tempminSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Temp (avg)</p>
+				    <p class="alignright"><span id ="tempavg">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="tempavgSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			    <div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="alignleft">Cell Temp (max)</p>
+				    <p class="alignright"><span id ="tempmax">0</span> V</p>
+				    <div style="clear: both;"></div>
+				</div>
+				<div class="panel-body">
+				    <span class ="tempmaxSpark">Loading..</span><br>
+				</div>
+			    </div>
+			</div>
+		    </div>
+		    <h3>GPS</h3>                  
+		    <div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			    <div class="panel panel-default">
 				<div class="panel-heading">
@@ -523,7 +796,21 @@ var sparkdata = {"busCurrent": [],
     "alt": [],
     "lon": [],
     "lat": [],
-    "setBusCurrent": []};
+    "setBusCurrent": [],
+    "cellVmin": [],
+    "cellVavg": [],
+    "cellVmax": [],
+    "packCurr": [],
+    "tempmax": [], 
+    "tempavg": [], 
+    "tempmin": [], 
+    "SoC": [],
+    "pVolt": [],
+    "pSumVolt": [],
+    "DCLim": [],
+    "CCLim": [],
+    "relayState": [],
+    "currState": []};
 var updateInterval = 1000;
 var sparklength = (1000/updateInterval) * 60 * 2;
 window.onload = function () {
@@ -557,25 +844,72 @@ window.onload = function () {
 		});
     };
 
+    var updateBMSState = function () {
+	var jqxhr = $.getJSON( "bmsjson", {_: new Date().getTime()},
+		function(bmsstate) {
+		    var fields = bmsstate;
+		    updateBody(fields);
+		    updateHeader(fields);
+		    updateSparks(fields, sparkdata, sparklength);
+		});
+    };
+	
+    var updatempptwoofState = function () {
+	var jqxhr = $.getJSON( "mppt_woofjson", {_: new Date().getTime()},
+		function(mpptstate) {
+		    var fields = mpptstate;
+		    updateBody(fields);
+		    updateHeader(fields);
+		    updateSparks(fields, sparkdata, sparklength);
+		});
+    };
+    var updatempptjavedState = function () {
+	var jqxhr = $.getJSON( "mppt_javedjson", {_: new Date().getTime()},
+		function(mpptstate) {
+		    var fields = mpptstate;
+		    updateBody(fields);
+		    updateHeader(fields);
+		    updateSparks(fields, sparkdata, sparklength);
+		});
+    };
     // update chart after specified time.
     setInterval(function(){updateMotorState()}, updateInterval);
     setInterval(function(){updateControlsState()}, updateInterval);
     setInterval(function(){updateGPSState()}, updateInterval);
+    setInterval(function(){updateBMSState()}, updateInterval);
+    setInterval(function(){updatempptwoofState()}, updateInterval);
+    setInterval(function(){updatempptjavedState()}, updateInterval);
 
 }
 function updateHeader(fields) {
     if ("vehicleVelocity" in fields) {
 	document.getElementById("top1").innerHTML = (fields.vehicleVelocity*3.6).toPrecision(3);
 	document.getElementById("top2").innerHTML = Math.sqrt(Math.pow(fields.vectCurrReal,2) +Math.pow(fields.vectCurrImag,2)).toPrecision(3);
-	document.getElementById("top3").innerHTML = fields.motorTemp.toPrecision(3);
-	document.getElementById("top4").innerHTML = fields.busVoltage.toPrecision(3);
-    }};
+    }
+    else if ("packCurr" in fields) {
+	document.getElementById("top3").innerHTML = (fields.packCurr).toPrecision(3);
+	document.getElementById("top4").innerHTML = (fields.pVolt).toPrecision(3);
+	document.getElementById("top5").innerHTML = (fields.SoC).toPrecision(3);
+	document.getElementById("top6").innerHTML = (fields.tempmax).toPrecision(3);
+    }
+};
 function updateBody(fields) {
+	if ("name" in fields) {
+		append = "_" + fields["name"]
+	}
+	else { 
+		append = ""
+	}
+
     for (key in fields){
+	    console.log(key+append)
 	try{
 	    if (key != "time") {
-		document.getElementById(key).innerHTML= fields[key].toPrecision(3);
-	    }
+		    if (typeof fields[key] === "boolean"){
+		document.getElementById(key + append).innerHTML= fields[key];
+		    }else{
+		document.getElementById(key + append).innerHTML= fields[key].toPrecision(3);
+		    }}
 	}
 	catch (err) {};
     }
